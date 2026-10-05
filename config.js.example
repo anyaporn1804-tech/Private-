@@ -1,0 +1,3 @@
+// ถ้าต้องการใช้ LIFF จริง ให้เปลี่ยนไฟล์นี้เป็น config.js
+// แล้วเพิ่ม <script src="/config.js"></script> ก่อน app.js ใน index.html
+window.__LIFF_ID__ = "YOUR_LIFF_ID";

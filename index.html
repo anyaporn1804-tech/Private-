@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SlipCheck | ตรวจสอบสลิป</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <div class="brand">SlipCheck <span>LINE</span></div>
+  <div id="lineState" class="badge">กำลังเชื่อมต่อ LINE…</div>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">ระบบตรวจสอบการชำระเงิน</div>
+      <h1>ตรวจสลิป<br><strong>มั่นใจทุกยอด</strong></h1>
+      <p>ตรวจสอบสลิปธนาคารไทย พร้อมตรวจสลิปซ้ำและตรวจยอดเงิน</p>
+    </div>
+    <div class="money">฿</div>
+  </section>
+
+  <div class="tabs">
+    <button class="tab active" data-page="upload">📤 ตรวจสลิป</button>
+    <button class="tab" data-page="history">🕘 ประวัติ</button>
+  </div>
+
+  <section id="uploadPage" class="page">
+    <div class="card">
+      <h2>อัปโหลดสลิป</h2>
+      <p class="muted">รูปสลิปต้องเห็น QR/ข้อมูลธุรกรรมชัดเจน</p>
+
+      <label id="dropzone" class="dropzone">
+        <input id="slip" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
+        <div class="uploadIcon">↑</div>
+        <b>แตะเพื่อเลือกสลิป</b>
+        <span>JPG / PNG / WEBP / GIF • ไม่เกิน 10 MB</span>
+      </label>
+
+      <div id="previewBox" class="preview hidden">
+        <img id="preview">
+        <div><b id="filename"></b><button id="remove" class="link">เปลี่ยนรูป</button></div>
+      </div>
+
+      <label class="field">ยอดที่ต้องการตรวจสอบ
+        <input id="amount" type="number" min="0" step="0.01" placeholder="เช่น 500">
+      </label>
+
+      <button id="verify" class="primary" disabled>🔎 ตรวจสอบสลิปจริง</button>
+      <div id="loading" class="loading hidden">กำลังส่งสลิปให้ระบบตรวจสอบ…</div>
+    </div>
+
+    <div class="security">
+      <b>🔐 ตรวจสอบ 2 ชั้น</b>
+      <span>EasySlip ตรวจข้อมูลธุรกรรม + ฐานข้อมูลของระบบป้องกันเลขอ้างอิงซ้ำ</span>
+    </div>
+  </section>
+
+  <section id="resultPage" class="page hidden">
+    <div class="card result">
+      <div id="resultIcon" class="resultIcon">✓</div>
+      <h2 id="resultTitle">-</h2>
+      <p id="resultMessage" class="muted"></p>
+      <div class="details">
+        <div><span>จำนวนเงิน</span><b id="rAmount">-</b></div>
+        <div><span>วันเวลา</span><b id="rDate">-</b></div>
+        <div><span>ธนาคารผู้โอน</span><b id="rSender">-</b></div>
+        <div><span>ธนาคารผู้รับ</span><b id="rReceiver">-</b></div>
+        <div><span>เลขอ้างอิง</span><b id="rRef">-</b></div>
+      </div>
+      <button id="again" class="secondary">ตรวจสลิปใบอื่น</button>
+    </div>
+  </section>
+
+  <section id="historyPage" class="page hidden">
+    <div class="card">
+      <div class="head"><div><h2>ประวัติการตรวจ</h2><p class="muted">100 รายการล่าสุด</p></div><button id="refresh" class="link">รีเฟรช</button></div>
+      <div id="history"></div>
+    </div>
+  </section>
+</main>
+
+<footer>SlipCheck • Real API version</footer>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<script>window.__LIFF_ID__="";</script>
+<script src="/app.js"></script>
+</body>
+</html>
